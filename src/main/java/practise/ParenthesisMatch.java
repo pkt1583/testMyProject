@@ -1,5 +1,7 @@
 package practise;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.util.*;
 
 public class ParenthesisMatch {
@@ -9,16 +11,19 @@ public class ParenthesisMatch {
 
     public ParenthesisMatch() {
 
+
     }
 
     public static void main(String[] args) {
-        String input = "{[}]";
         start.add('(');
-        start.add('{');
         end.put(')', '(');
+        start.add('{');
+        end.put('}','{');
         start.add('[');
         end.put(']', '[');
-        end.put('}','{');
+        Scanner scanner=new Scanner(new BufferedInputStream(System.in));
+       // String input=scanner.next();
+        String input="{[}]";
         System.out.println(isBalance(input));
     }
 

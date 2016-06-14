@@ -2,7 +2,6 @@ package sorting;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Timer;
 
 public class Sort {
     public static void main(String[] args) throws IOException {
@@ -18,20 +17,35 @@ public class Sort {
 
         int[] sortedElement = insertionSort(inputInteger);
         System.out.print(" Insertion sorted elements ");
-        for (int el : sortedElement) {
-            System.out.print(+el + " ");
-        }
-        System.out.println();
+        printeElements(sortedElement);
         sortedElement = selectionSort(inputInteger);
         System.out.print(" Selection sorted elements ");
-        for (int el : sortedElement) {
-            System.out.print(el + " ");
-        }
-        System.out.println();
+        printeElements(sortedElement);
         sortedElement = bubbleSort(inputInteger);
         System.out.print(" Bubble sorted elements ");
+        printeElements(sortedElement);
+        sortedElement = mergeSorted(inputInteger);
+        System.out.println(" Merge Sorted Elements ");
+        printeElements(sortedElement);
+    }
+
+    private static int[] mergeSorted(int[] inputInteger) {
+        int min=0,max=inputInteger.length,middle=(min+max)/2;
+        mergeSort(0,max+1);
+        return new int[0];
+    }
+
+    private static void mergeSort(int low,int high) {
+        if(low<high){
+            int middle=(low+high)/2;
+            mergeSort(low,middle);
+            mergeSort(middle+1,high);
+        }
+    }
+
+    private static void printeElements(int[] sortedElement) {
         for (int el : sortedElement) {
-            System.out.print(el + " ");
+            System.out.print(+el + " ");
         }
         System.out.println();
     }

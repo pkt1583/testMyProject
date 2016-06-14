@@ -1,28 +1,38 @@
+import java.io.BufferedInputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Test {
     public static void main(String[] args) {
-        System.out.println(convert(1193046));
+       // System.out.println(fibonacci(6));
+      //  System.out.println(fibonacii(6));
+        System.out.println(4%3);
     }
 
-    static String convert(long input) {
-        Map<String, String> map = new HashMap<>();
-        map.put("0", "0");
-        map.put("1", "a");
-        map.put("2", "t");
-        map.put("3", "l");
-        map.put("4", "s");
-        map.put("5", "i");
-        map.put("6", "n");
-        String base7 = Long.toString(input, 16);
-        System.out.println(base7);
-        String ans = "";
-        for (int i = 0; i < base7.length(); i++) {
-            ans += map.get(String.valueOf(base7.charAt(i)));
+    static int fibonacii(int tillWhat){
+        if(tillWhat==1){
+            return tillWhat;
         }
-        return ans;
-//123456
+        if(tillWhat==0){
+            return tillWhat;
+        }
+        return fibonacii(tillWhat-1)+fibonacii(tillWhat-2);
+    }
+    public static long fibonacci(long number) {
+        if ((number == 0) || (number == 1)) // base cases
+            return number;
+        else
+            // recursion step
+            return fibonacci(number - 1) + fibonacci(number - 2);
     }
 
+    static void printAscii(){
+        Scanner scanner=new Scanner(new BufferedInputStream(System.in));
+        String input=scanner.next();
+        char ch[]=input.toCharArray();
+        for(int i=0;i<ch.length;i++){
+            System.out.println((int)ch[i]);
+        }
+    }
 }
