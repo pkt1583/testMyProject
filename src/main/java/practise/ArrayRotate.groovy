@@ -7,6 +7,7 @@ int numberOfQueries=scanner.nextInt()
 
 MyNode firstNode
 MyNode currentOperatingNode;
+
 for (int i = 0; i < numberOfElementsInArray; i++) {
     if(i==0){
         firstNode=new MyNode()
@@ -21,26 +22,37 @@ for (int i = 0; i < numberOfElementsInArray; i++) {
     }
 }
 MyNode lastNode=currentOperatingNode;
+if(!(numberOfRotations/numberOfElementsInArray==0)) {
 
-numberOfRotations.times {
-    lastNode.nextNode=firstNode
-    firstNode.previousNode=lastNode
-    firstNode=lastNode
-    lastNode= lastNode.previousNode
-    lastNode.nextNode=null
+    numberOfRotations.times {
+        lastNode.nextNode = firstNode
+        firstNode.previousNode = lastNode
+        firstNode = lastNode
+        lastNode = lastNode.previousNode
+        lastNode.nextNode = null
+    }
 }
 
 
 MyNode iteratingNode=firstNode
 
+def mapForSearch=[:]
+int i=0
 while (true){
     if(iteratingNode!=null){
-        print(iteratingNode.value+" ")
+        mapForSearch[i++]=iteratingNode.value+" "
         iteratingNode=iteratingNode.nextNode
     }else {
         break
     }
 }
+
+numberOfQueries.times {
+    println mapForSearch[scanner.nextInt()]
+}
+
+
+
  class MyNode {
     int value;
     MyNode nextNode;
