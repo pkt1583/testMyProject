@@ -5,10 +5,10 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executor;
 
-/**
- * Created by pankaj on 4/9/16.
- */
-public class MyDummyConnection implements Connection {
+public class PooledConnectionDelegate implements Connection {
+    public PooledConnectionDelegate() {
+    }
+
     @Override
     public Statement createStatement() throws SQLException {
         return null;
