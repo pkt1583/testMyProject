@@ -1,313 +1,281 @@
 package pool;
 
-import sun.dc.pr.PRError;
-
 import java.sql.*;
 import java.util.Map;
 import java.util.Properties;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
 
 /**
- * Created by pankaj on 4/9/16.
+ * Created by pankaj on 17/9/16.
  */
-public class PooledConnection<T extends Connection> implements Connection {
-
-    private final PooledConnectionDelegate pooledConnectionDelegate = new PooledConnectionDelegate();
-
-    private BlockingQueue<PooledConnection<T>> connnectionPool;
-    private T actualConnection;
-
-    public PooledConnection(BlockingQueue<PooledConnection<T>> connnectionPool, T actualConnection) {
-        this.connnectionPool = connnectionPool;
-        this.actualConnection = actualConnection;
-    }
-
+public class MyDefaultConnection implements Connection {
     @Override
     public Statement createStatement() throws SQLException {
-        return pooledConnectionDelegate.createStatement();
+        return null;
     }
 
     @Override
     public PreparedStatement prepareStatement(String sql) throws SQLException {
-        return pooledConnectionDelegate.prepareStatement(sql);
+        return null;
     }
 
     @Override
     public CallableStatement prepareCall(String sql) throws SQLException {
-        return pooledConnectionDelegate.prepareCall(sql);
+        return null;
     }
 
     @Override
     public String nativeSQL(String sql) throws SQLException {
-        return pooledConnectionDelegate.nativeSQL(sql);
+        return null;
     }
 
     @Override
     public void setAutoCommit(boolean autoCommit) throws SQLException {
 
-        pooledConnectionDelegate.setAutoCommit(autoCommit);
     }
 
     @Override
     public boolean getAutoCommit() throws SQLException {
-        return pooledConnectionDelegate.getAutoCommit();
+        return false;
     }
 
     @Override
     public void commit() throws SQLException {
 
-        pooledConnectionDelegate.commit();
     }
 
     @Override
     public void rollback() throws SQLException {
 
-        pooledConnectionDelegate.rollback();
     }
 
     @Override
     public void close() throws SQLException {
 
-        pooledConnectionDelegate.close();
     }
 
     @Override
     public boolean isClosed() throws SQLException {
-        return pooledConnectionDelegate.isClosed();
+        return false;
     }
 
     @Override
     public DatabaseMetaData getMetaData() throws SQLException {
-        return pooledConnectionDelegate.getMetaData();
+        return null;
     }
 
     @Override
     public void setReadOnly(boolean readOnly) throws SQLException {
 
-        pooledConnectionDelegate.setReadOnly(readOnly);
     }
 
     @Override
     public boolean isReadOnly() throws SQLException {
-        return pooledConnectionDelegate.isReadOnly();
+        return false;
     }
 
     @Override
     public void setCatalog(String catalog) throws SQLException {
 
-        pooledConnectionDelegate.setCatalog(catalog);
     }
 
     @Override
     public String getCatalog() throws SQLException {
-        return pooledConnectionDelegate.getCatalog();
+        return null;
     }
 
     @Override
     public void setTransactionIsolation(int level) throws SQLException {
 
-        pooledConnectionDelegate.setTransactionIsolation(level);
     }
 
     @Override
     public int getTransactionIsolation() throws SQLException {
-        return pooledConnectionDelegate.getTransactionIsolation();
+        return 0;
     }
 
     @Override
     public SQLWarning getWarnings() throws SQLException {
-        return pooledConnectionDelegate.getWarnings();
+        return null;
     }
 
     @Override
     public void clearWarnings() throws SQLException {
 
-        pooledConnectionDelegate.clearWarnings();
     }
 
     @Override
     public Statement createStatement(int resultSetType, int resultSetConcurrency) throws SQLException {
-        return pooledConnectionDelegate.createStatement(resultSetType, resultSetConcurrency);
+        return null;
     }
 
     @Override
     public PreparedStatement prepareStatement(String sql, int resultSetType, int resultSetConcurrency) throws SQLException {
-        return pooledConnectionDelegate.prepareStatement(sql, resultSetType, resultSetConcurrency);
+        return null;
     }
 
     @Override
     public CallableStatement prepareCall(String sql, int resultSetType, int resultSetConcurrency) throws SQLException {
-        return pooledConnectionDelegate.prepareCall(sql, resultSetType, resultSetConcurrency);
+        return null;
     }
 
     @Override
     public Map<String, Class<?>> getTypeMap() throws SQLException {
-        return pooledConnectionDelegate.getTypeMap();
+        return null;
     }
 
     @Override
     public void setTypeMap(Map<String, Class<?>> map) throws SQLException {
 
-        pooledConnectionDelegate.setTypeMap(map);
     }
 
     @Override
     public void setHoldability(int holdability) throws SQLException {
 
-        pooledConnectionDelegate.setHoldability(holdability);
     }
 
     @Override
     public int getHoldability() throws SQLException {
-        return pooledConnectionDelegate.getHoldability();
+        return 0;
     }
 
     @Override
     public Savepoint setSavepoint() throws SQLException {
-        return pooledConnectionDelegate.setSavepoint();
+        return null;
     }
 
     @Override
     public Savepoint setSavepoint(String name) throws SQLException {
-        return pooledConnectionDelegate.setSavepoint(name);
+        return null;
     }
 
     @Override
     public void rollback(Savepoint savepoint) throws SQLException {
 
-        pooledConnectionDelegate.rollback(savepoint);
     }
 
     @Override
     public void releaseSavepoint(Savepoint savepoint) throws SQLException {
 
-        pooledConnectionDelegate.releaseSavepoint(savepoint);
     }
 
     @Override
     public Statement createStatement(int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException {
-        return pooledConnectionDelegate.createStatement(resultSetType, resultSetConcurrency, resultSetHoldability);
+        return null;
     }
 
     @Override
     public PreparedStatement prepareStatement(String sql, int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException {
-        return pooledConnectionDelegate.prepareStatement(sql, resultSetType, resultSetConcurrency, resultSetHoldability);
+        return null;
     }
 
     @Override
     public CallableStatement prepareCall(String sql, int resultSetType, int resultSetConcurrency, int resultSetHoldability) throws SQLException {
-        return pooledConnectionDelegate.prepareCall(sql, resultSetType, resultSetConcurrency, resultSetHoldability);
+        return null;
     }
 
     @Override
     public PreparedStatement prepareStatement(String sql, int autoGeneratedKeys) throws SQLException {
-        return pooledConnectionDelegate.prepareStatement(sql, autoGeneratedKeys);
+        return null;
     }
 
     @Override
     public PreparedStatement prepareStatement(String sql, int[] columnIndexes) throws SQLException {
-        return pooledConnectionDelegate.prepareStatement(sql, columnIndexes);
+        return null;
     }
 
     @Override
     public PreparedStatement prepareStatement(String sql, String[] columnNames) throws SQLException {
-        return pooledConnectionDelegate.prepareStatement(sql, columnNames);
+        return null;
     }
 
     @Override
     public Clob createClob() throws SQLException {
-        return pooledConnectionDelegate.createClob();
+        return null;
     }
 
     @Override
     public Blob createBlob() throws SQLException {
-        return pooledConnectionDelegate.createBlob();
+        return null;
     }
 
     @Override
     public NClob createNClob() throws SQLException {
-        return pooledConnectionDelegate.createNClob();
+        return null;
     }
 
     @Override
     public SQLXML createSQLXML() throws SQLException {
-        return pooledConnectionDelegate.createSQLXML();
+        return null;
     }
 
     @Override
     public boolean isValid(int timeout) throws SQLException {
-        return pooledConnectionDelegate.isValid(timeout);
+        return false;
     }
 
     @Override
     public void setClientInfo(String name, String value) throws SQLClientInfoException {
 
-        pooledConnectionDelegate.setClientInfo(name, value);
     }
 
     @Override
     public void setClientInfo(Properties properties) throws SQLClientInfoException {
 
-        pooledConnectionDelegate.setClientInfo(properties);
     }
 
     @Override
     public String getClientInfo(String name) throws SQLException {
-        return pooledConnectionDelegate.getClientInfo(name);
+        return null;
     }
 
     @Override
     public Properties getClientInfo() throws SQLException {
-        return pooledConnectionDelegate.getClientInfo();
+        return null;
     }
 
     @Override
     public Array createArrayOf(String typeName, Object[] elements) throws SQLException {
-        return pooledConnectionDelegate.createArrayOf(typeName, elements);
+        return null;
     }
 
     @Override
     public Struct createStruct(String typeName, Object[] attributes) throws SQLException {
-        return pooledConnectionDelegate.createStruct(typeName, attributes);
+        return null;
     }
 
     @Override
     public void setSchema(String schema) throws SQLException {
 
-        pooledConnectionDelegate.setSchema(schema);
     }
 
     @Override
     public String getSchema() throws SQLException {
-        return pooledConnectionDelegate.getSchema();
+        return null;
     }
 
     @Override
     public void abort(Executor executor) throws SQLException {
 
-        pooledConnectionDelegate.abort(executor);
     }
 
     @Override
     public void setNetworkTimeout(Executor executor, int milliseconds) throws SQLException {
 
-        pooledConnectionDelegate.setNetworkTimeout(executor, milliseconds);
     }
 
     @Override
     public int getNetworkTimeout() throws SQLException {
-        return pooledConnectionDelegate.getNetworkTimeout();
+        return 0;
     }
 
     @Override
     public <T> T unwrap(Class<T> iface) throws SQLException {
-        return pooledConnectionDelegate.unwrap(iface);
+        return null;
     }
 
     @Override
     public boolean isWrapperFor(Class<?> iface) throws SQLException {
-        return pooledConnectionDelegate.isWrapperFor(iface);
+        return false;
     }
 }

@@ -4,8 +4,8 @@ import org.junit.Test
 
 import java.util.concurrent.*
 
-class ConnectionPoolFactoryTest extends GroovyTestCase {
-    ConnectionPoolFactory connectionPoolFactory = new ConnectionPoolFactory(5, 10, new PooledConnection())
+class ConnectionSomePoolFactoryTest extends GroovyTestCase {
+    ConnectionPoolFactory connectionPoolFactory = new ConnectionPoolFactory(5, 10, new MyDefaultConnection())
 
     @Test
     void testAddToPool() {
@@ -16,7 +16,7 @@ class ConnectionPoolFactoryTest extends GroovyTestCase {
                 new Consumer()
 
         ))
-        println "The size of futures is "+futures.size()
+        println "The size of futures is " + futures.size()
         futures.size().times {
             String ouput = completionService.take().get()
             println ouput
@@ -38,7 +38,7 @@ class ConnectionPoolFactoryTest extends GroovyTestCase {
         String call() throws Exception {
             println "Calling Callable Call method"
             PooledConnectionProxy pooledConnection = connectionPoolFactory.getConnection();
-          //  pooledConnection.sleep(1000)
+            //  pooledConnection.sleep(1000)
             return pooledConnection.toString()
         }
     }

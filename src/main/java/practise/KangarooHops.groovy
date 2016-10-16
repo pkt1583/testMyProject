@@ -6,20 +6,29 @@ import static java.lang.Math.abs
  * Created by pankaj on 5/9/16.
  */
 
-int firstStartPosition
-int secondStartPosition
-int firstHops
-int secondHops
+double firstStartPosition
+double secondStartPosition
+double firstHops
+double secondHops
 def scanner=new Scanner(System.in)
-firstStartPosition=scanner.nextInt()
-firstHops=scanner.nextInt()
-secondStartPosition=scanner.nextInt()
-secondHops=scanner.nextInt()
+firstStartPosition=scanner.nextDouble()
+firstHops=scanner.nextDouble()
+secondStartPosition=scanner.nextDouble()
+secondHops=scanner.nextDouble()
 
 if((secondStartPosition>=firstStartPosition) && (secondHops>firstHops)){
-    print("NO")
+    println("NO")
+    return
 }
 
+double result=(firstStartPosition-secondStartPosition)/(secondHops-firstHops)
+
+if(result.intValue()==result){
+    println "YES"
+}else {
+    println("NO")
+}
+/*
 int commonVal=firstHops*secondHops
 
 int next=2
@@ -32,4 +41,4 @@ while (true) {
         commonVal=commonVal*next
         next++
     }
-}
+}*/

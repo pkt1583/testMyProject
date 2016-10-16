@@ -5,9 +5,20 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executor;
 
-public class PooledConnectionDelegate implements Connection {
-    public PooledConnectionDelegate() {
+public class PooledConnectionDelegate<U extends Connection> implements Connection {
+    private U actualConnection=null;
+
+    private int id=0;
+    public PooledConnectionDelegate(U actualConnection) {
+        this.actualConnection=actualConnection;
     }
+
+    public PooledConnectionDelegate(U actualConnection, int id) {
+        this.actualConnection = actualConnection;
+        this.id = id;
+    }
+
+
 
     @Override
     public Statement createStatement() throws SQLException {
@@ -277,5 +288,9 @@ public class PooledConnectionDelegate implements Connection {
     @Override
     public boolean isWrapperFor(Class<?> iface) throws SQLException {
         return false;
+    }
+
+    public int getId() {
+        return id;
     }
 }

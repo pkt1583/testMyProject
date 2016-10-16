@@ -1,5 +1,7 @@
 package pool;
 
+import org.apache.log4j.Logger;
+
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -7,28 +9,20 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Created by pankaj on 4/9/16.
  */
-public class Pool<T> {
+public class SomePool<T> {
 
-    private static Pool _instance = new Pool();
+    private static SomePool _instance ;
     private BlockingQueue<T> poolQueue;
     private volatile int initialSize;
     private volatile int maxSize;
     private AtomicInteger currentBorrowedInstance = new AtomicInteger(0);
 
-    private Pool() {
-        poolQueue = new ArrayBlockingQueue<T>(initialSize);
+    protected Logger logger= Logger.getLogger(getClass());
+    private SomePool(int initialSize, int maxSize) {
+        logger.info("Initializing pool with maxSize "+maxSize);
+        poolQueue = new ArrayBlockingQueue<T>(maxSize);
         this.initialSize = initialSize;
         this.maxSize = maxSize;
-    }
-
-    public static final Pool getInstance() {
-        synchronized (Pool.class) {
-            if (_instance != null) {
-                return _instance;
-            } else {
-                return new Pool();
-            }
-        }
     }
 
     public T borrowInstance() {
