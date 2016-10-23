@@ -18,14 +18,14 @@ int bCount=0
 numberOfApples.times {
     int position = apple + (scanner.nextInt())
 
-    if (position >= sama) {
+    if (position >= sama && position<=samb) {
         aCount = aCount + 1
     }
 }
 
 numberOfOranges.times {
     int position = orange + (scanner.nextInt())
-    if (position <= samb) {
+    if (position <= samb && position >= sama) {
      //   println "Printing count for $position"
         bCount = bCount + 1
     }

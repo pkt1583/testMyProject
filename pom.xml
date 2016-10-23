@@ -18,6 +18,11 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.scala-tools</groupId>
+                <artifactId>maven-scala-plugin</artifactId>
+                <version>RELEASE</version>
+            </plugin>
         </plugins>
     </build>
     <dependencies>
@@ -78,6 +83,35 @@
             <artifactId>hsqldb</artifactId>
             <version>2.3.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-compiler</artifactId>
+            <version>2.11.8</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.scala-lang/scala-library -->
+      <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>2.11.8</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-reflect</artifactId>
+            <version>2.11.8</version>
+        </dependency>
+
+        <!-- TODO modularize compiler: these dependencies will disappear when the compiler is modularized -->
+       <!-- <dependency> &lt;!&ndash; for scala-compiler-doc &ndash;&gt;
+            <groupId>org.scala-lang.modules</groupId>
+            <artifactId>scala-xml_2.11</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+        <dependency> &lt;!&ndash; for scala-compiler-doc &ndash;&gt;
+            <groupId>org.scala-lang.modules</groupId>
+            <artifactId>scala-parser-combinators_2.11</artifactId>
+            <version>1.0.4</version>
+        </dependency>-->
+
     </dependencies>
 
 
