@@ -35,7 +35,7 @@
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <version>2.4.4</version>
+            <version>1.8.6</version>
         </dependency>
         <dependency>
             <groupId>commons-dbcp</groupId>
@@ -99,7 +99,16 @@
             <artifactId>scala-reflect</artifactId>
             <version>2.11.8</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.21</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>1.2</version>
+        </dependency>
         <!-- TODO modularize compiler: these dependencies will disappear when the compiler is modularized -->
        <!-- <dependency> &lt;!&ndash; for scala-compiler-doc &ndash;&gt;
             <groupId>org.scala-lang.modules</groupId>
